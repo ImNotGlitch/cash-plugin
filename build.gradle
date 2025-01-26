@@ -1,0 +1,34 @@
+plugins {
+    id("java")
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+group = "com.github.imnotglitch"
+version = "1.0-SNAPSHOT"
+
+tasks.build.dependsOn("shadowJar")
+
+repositories {
+    mavenCentral()
+    maven { url = "https://repo.roinujnosde.me/releases/" }
+    maven { url = "https://jitpack.io/" }
+    maven { url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/" }
+    maven { url = "https://maven.enginehub.org/repo/" }
+}
+
+dependencies {
+    implementation("com.github.SaiintBrisson.command-framework:bukkit:1.3.1")
+    def lombok = "org.projectlombok:lombok:1.18.24"
+    compileOnly("org.jetbrains:annotations:23.0.0")
+    compileOnly(lombok)
+    compileOnly fileTree('libs')
+    annotationProcessor(lombok)
+    implementation("com.zaxxer:HikariCP:4.0.3")
+}
+
+compileJava {
+    options.encoding('UTF-8')
+
+    sourceCompatibility('1.8')
+    targetCompatibility('1.8')
+}
