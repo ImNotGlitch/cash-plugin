@@ -1,4 +1,0 @@
-package com.github.imnotglitch.listener;
-
-public class PlayerEvent {
-}
